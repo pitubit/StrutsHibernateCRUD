@@ -1,0 +1,24 @@
+<!DOCTYPE struts-config PUBLIC
+       "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+       "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+       
+<struts-config>
+
+	<form-beans>
+		<form-bean name="studentForm" type="com.example.form.StudentForm" />
+	</form-beans>
+
+	<action-mappings>
+		<action 
+			path="/students"
+			parameter="action"
+			type="com.example.actions.StudentAction" 
+			name="studentForm" >
+			<forward name="showSingle" path="/pages/student.jsp" />
+			<forward name="showMultiple" path="/pages/index.jsp" />
+			<forward name="successCreateOrUpdate" redirect="true" path="/students.do?action=multiRetrieve" />
+			<forward name="successDelete" redirect="true" path="/students.do?action=multiRetrieve" />
+		</action>
+	</action-mappings>
+
+</struts-config>
